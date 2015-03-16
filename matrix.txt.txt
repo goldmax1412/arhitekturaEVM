@@ -170,6 +170,156 @@ void step(int M)
             cout<<c[i][j]<<"  ";
 	   };    	
    }
+void minus(int M,int N,int K,int L)
+{
+	if(M==L && N==K)
+	{
+		int **A = new int* [M]; // kol-vo strok
+    for (int i = 0; i < M; i++)
+         A[i] = new int [N]; // kol-vo stolbcov
+		int **B = new int* [L]; // kol-vo strok
+	for (int i = 0; i < L; i++)
+       B[i] = new int [K]; // kol-vo stolbcov
+
+		int **C = new int* [M]; // kol-vo strok
+    for (int i = 0; i < M; i++)
+        C[i] = new int [K]; // kol-vo stolbcov
+
+    cout << "Vvedite pervuyu matricu: " << endl;
+
+    for (int i = 0; i < M; i++)
+    {
+        // Zapolnyaem strochku:
+        for (int j = 0; j < N; j++)
+        {
+                cin >> A[i][j];
+        }
+    }
+
+    cout << "Vvedite vtoruyu matricu: " << endl;
+
+    for (int i = 0; i < N; i++)
+    {
+        // Zapolnyaem strochku:
+        for (int j = 0; j < M; j++)
+        {
+                cin >> B[i][j];
+        }
+    }
+	for (int i = 0; i < M ; i++)
+	{
+		for (int j = 0; j < K ; j++)
+		{
+			C[i][j] = 0;
+		}
+	}
+    cout << "Raznost` matric ravna : " << endl;
+		for (int i = 0; i < M; i++)
+		{
+			for (int j = 0; j < N; j++)
+				{
+					C[i][j] = A[i][j] - B[i][j];
+				}
+		}
+		
+		for (int i = 0; i < M ; i++)
+		{
+			for (int j = 0; j < K ; j++)
+			{
+				cout << C[i][j] << " " ;
+			}
+			cout << endl;
+		}
+
+		for (int i = 0; i < M; i++)
+			delete [] A[i];
+		for (int i = 0; i < L; i++)
+			delete [] B[i];
+		for (int i = 0; i < M; i++)
+        delete [] C[i];
+	}
+	else
+	{
+		cout<<"error";
+	}
+}
+
+void plus(int M,int N,int K,int L)
+{
+	if(M==L && N==K)
+	{
+		int **A = new int* [M]; // kol-vo strok
+    for (int i = 0; i < M; i++)
+         A[i] = new int [N]; // kol-vo stolbcov
+
+
+		int **B = new int* [L]; // kol-vo strok
+	for (int i = 0; i < L; i++)
+       B[i] = new int [K]; // kol-vo stolbcov
+
+
+		int **C = new int* [M]; // kol-vo strok
+    for (int i = 0; i < M; i++)
+        C[i] = new int [K]; // kol-vo stolbcov
+
+    cout << "Vvedite pervuyu matricu: " << endl;
+
+    for (int i = 0; i < M; i++)
+    {
+        // Zapolnyaem strochku:
+        for (int j = 0; j < N; j++)
+        {
+                cin >> A[i][j];
+        }
+    }
+
+    cout << "Vvedite vtoruyu matricu: " << endl;
+
+    for (int i = 0; i < N; i++)
+    {
+        // Zapolnyaem strochku:
+        for (int j = 0; j < M; j++)
+        {
+                cin >> B[i][j];
+        }
+    }
+	for (int i = 0; i < M ; i++)
+	{
+		for (int j = 0; j < K ; j++)
+		{
+			C[i][j] = 0;
+		}
+	}
+    cout << "Raznost` matric ravna: " << endl;
+		for (int i = 0; i < M; i++)
+		{
+			for (int j = 0; j < N; j++)
+				{
+					C[i][j] = A[i][j] + B[i][j];
+				}
+		}
+		
+		for (int i = 0; i < M ; i++)
+		{
+			for (int j = 0; j < K ; j++)
+			{
+				cout << C[i][j] << " " ;
+			}
+			cout << endl;
+		}
+
+		for (int i = 0; i < M; i++)
+			delete [] A[i];
+		for (int i = 0; i < L; i++)
+			delete [] B[i];
+		for (int i = 0; i < M; i++)
+        delete [] C[i];
+	}
+	else
+	{
+		cout<<"error";
+	}
+}
 int main()
 {
 	
@@ -198,6 +348,26 @@ int main()
 cout << "Vvedite rang matricy ";
     cin >> M;
 	step(M);
+cout<<endl;
+	cout << "Vvedite kol-vo strok matricu 1: ";
+    cin >> M;
+    cout << "Vvedite kol-vo stolbcov matricu 1: ";
+    cin >> N;
+	cout << "Vvedite kol-vo stolbcov matricu 2: ";
+    cin >> K;
+	cout << ""Vvedite kol-vo strok matricu 2: ";
+    cin >> L;
+	plus(M,N,K,L);
+	cout<<endl;
+	cout << ""Vvedite kol-vo strok matricu 1: ";
+    cin >> M;
+    cout << "Vvedite kol-vo stolbcov matricu 1: ";
+    cin >> N;
+	cout << "Vvedite kol-vo stolbcov matricu 2: ";
+    cin >> K;
+	cout << ""Vvedite kol-vo strok matricu 2: ";
+    cin >> L;
+	minus(M,N,K,L);
 system("pause");
 	return 0;
 
