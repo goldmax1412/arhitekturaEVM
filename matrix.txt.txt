@@ -1,96 +1,97 @@
 #include <iostream>
-
 using namespace std;
 
-int main()
+
+void umn(int M,int N,int K,int L)
 {
-setlocale(LC_ALL,"Russian");
-
-    int M = 0, N = 0, K = 0;
-
-cout << "Введите кол-во строк первой матрицы: ";
-    cin >> M;
-
-    cout << "Введите кол-во столбцов первой матрицы: ";
-    cin >> N;
-
-cout << "Введите кол-во столбцов второй матрицы: ";
-    cin >> K;
-
-    int **A = new int* [M]; // кол-во строк
+	
+	if(N=L)
+	{
+		int **A = new int* [M]; // kol-vo strok
     for (int i = 0; i < M; i++)
-        A[i] = new int [N]; // кол-во столбцов
+         A[i] = new int [N]; // kol-vo stolbcov
 
-    int **B = new int* [N]; // кол-во строк
-    for (int i = 0; i < N; i++)
-        B[i] = new int [K]; // кол-во столбцов
+		int **B = new int* [L]; // kol-vo strok
+	for (int i = 0; i < L; i++)
+       B[i] = new int [K]; // kol-vo stolbcov
 
-int **C = new int* [M]; // кол-во строк
+		int **C = new int* [M]; // kol-vo strok
     for (int i = 0; i < M; i++)
-        C[i] = new int [K]; // кол-во столбцов
+        C[i] = new int [K]; // kol-vo stolbcov
 
-    cout << "Введите первую матрицу: " << endl;
+    cout << "Vvedite pervyu matricy: " << endl;
 
     for (int i = 0; i < M; i++)
     {
-        // Заполняем строчку:
+        // Zapolnaem strochky:
         for (int j = 0; j < N; j++)
         {
                 cin >> A[i][j];
         }
     }
 
-    cout << "Введите вторую матрицу: " << endl;
+    cout << "Vvedite vtoryu matricy: " << endl;
 
     for (int i = 0; i < N; i++)
     {
-        // Заполняем строчку:
+        // Zapolnaem strochky:
         for (int j = 0; j < M; j++)
         {
                 cin >> B[i][j];
         }
     }
-for (int i = 0; i < M ; i++)
-{
-for (int j = 0; j < K ; j++)
-{
-C[i][j] = 0;
-}
-}
-    cout << "Произведение матриц равно: " << endl;
-    for (int i = 0; i < M; i++)
-{
-for (int k = 0; k < K; k++)
-{
-for (int j = 0; j < N; j++)
-{
-                 C[i][k] += A[i][j] * B[j][k];
-}
-        }
-    }
+	for (int i = 0; i < M ; i++)
+	{
+		for (int j = 0; j < K ; j++)
+		{
+			C[i][j] = 0;
+		}
+	}
+    cout << "Proizvedenie matric ravno: " << endl;
+		for (int i = 0; i < M; i++)
+		{
+			for (int k = 0; k < K; k++)
+			{
+				for (int j = 0; j < N; j++)
+				{
+					C[i][k] += A[i][j] * B[j][k];
+				}
+			}
+		}
+		
+		for (int i = 0; i < M ; i++)
+		{
+			for (int j = 0; j < K ; j++)
+			{
+				cout << C[i][j] << " " ;
+			}
+			cout << endl;
+		}
 
-
-
-    for (int i = 0; i < M ; i++)
-{
-for (int j = 0; j < K ; j++)
-{
-cout << C[i][j] << " " ;
-}
-cout << endl;
-}
-
-      
-    for (int i = 0; i < M; i++)
-        delete [] A[i];
-
-    for (int i = 0; i < N; i++)
-        delete [] B[i];
-
-for (int i = 0; i < M; i++)
+		for (int i = 0; i < M; i++)
+			delete [] A[i];
+		for (int i = 0; i < L; i++)
+			delete [] B[i];
+		for (int i = 0; i < M; i++)
         delete [] C[i];
-
-
-system("pause");
-return 0;
+	}
+	else
+	{
+		cout<<"error";
+	}
+}
+int main()
+{
+	
+	int M = 0, N = 0, K = 0, L = 0, P;
+	cout << "Vvedite kol-vo strok matricy 1: ";
+    cin >> M;
+    cout << "Vvedite kol-vo stolbcov matricy 1: ";
+    cin >> N;
+	cout << "Vvedite kol-vo stolbcov matricy 2: ";
+    cin >> K;
+	cout << "Vvedite kol-vo strok matricy 2: ";
+    cin >> L;
+	umn(M,N,K,L);
+	cout<<endl;
 }
