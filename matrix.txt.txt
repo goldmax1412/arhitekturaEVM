@@ -320,6 +320,38 @@ void plus(int M,int N,int K,int L)
 		cout<<"error";
 	}
 }
+void transp(int M,int N)
+{
+	int **A = new int* [M]; // strok
+    for (int i = 0; i < M; i++)
+         A[i] = new int [N]; // stolbcov
+
+	cout << "Vvedite matricu: " << endl;
+
+    for (int i = 0; i < M; i++)
+    {
+        // zap stroku:
+        for (int j = 0; j < N; j++)
+        {
+                cin >> A[i][j];
+        }
+    }
+	cout << "Transponirovannaya matrica: " << endl;
+	
+
+	for (int i = 0; i < N ; i++)
+		{
+			for (int j = 0;  j < M ; j++)
+			{
+				cout << A[j][i] << " " ;
+			}
+			cout << endl;
+		}
+
+		for (int i = 0; i < M; i++)
+			delete [] A[i];
+
+}
 int main()
 {
 	
@@ -345,7 +377,13 @@ int main()
     cin >> P;
 	umnch(M,N,P);
 	cout<<endl;
-cout << "Vvedite rang matricy ";
+	cout << "Vvedite kol-vo strok matricu 1:: ";
+    cin >> M;
+    cout << "Vvedite kol-vo stolbcov matricu 1: ";
+    cin >> N;
+	transp(M,N);
+	cout<<endl;
+	cout << "Vvedite rang matricy ";
     cin >> M;
 	step(M);
 cout<<endl;
