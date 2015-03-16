@@ -1,0 +1,96 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+setlocale(LC_ALL,"Russian");
+
+    int M = 0, N = 0, K = 0;
+
+cout << "Введите кол-во строк первой матрицы: ";
+    cin >> M;
+
+    cout << "Введите кол-во столбцов первой матрицы: ";
+    cin >> N;
+
+cout << "Введите кол-во столбцов второй матрицы: ";
+    cin >> K;
+
+    int **A = new int* [M]; // кол-во строк
+    for (int i = 0; i < M; i++)
+        A[i] = new int [N]; // кол-во столбцов
+
+    int **B = new int* [N]; // кол-во строк
+    for (int i = 0; i < N; i++)
+        B[i] = new int [K]; // кол-во столбцов
+
+int **C = new int* [M]; // кол-во строк
+    for (int i = 0; i < M; i++)
+        C[i] = new int [K]; // кол-во столбцов
+
+    cout << "Введите первую матрицу: " << endl;
+
+    for (int i = 0; i < M; i++)
+    {
+        // Заполняем строчку:
+        for (int j = 0; j < N; j++)
+        {
+                cin >> A[i][j];
+        }
+    }
+
+    cout << "Введите вторую матрицу: " << endl;
+
+    for (int i = 0; i < N; i++)
+    {
+        // Заполняем строчку:
+        for (int j = 0; j < M; j++)
+        {
+                cin >> B[i][j];
+        }
+    }
+for (int i = 0; i < M ; i++)
+{
+for (int j = 0; j < K ; j++)
+{
+C[i][j] = 0;
+}
+}
+    cout << "Произведение матриц равно: " << endl;
+    for (int i = 0; i < M; i++)
+{
+for (int k = 0; k < K; k++)
+{
+for (int j = 0; j < N; j++)
+{
+                 C[i][k] += A[i][j] * B[j][k];
+}
+        }
+    }
+
+
+
+    for (int i = 0; i < M ; i++)
+{
+for (int j = 0; j < K ; j++)
+{
+cout << C[i][j] << " " ;
+}
+cout << endl;
+}
+
+      
+    for (int i = 0; i < M; i++)
+        delete [] A[i];
+
+    for (int i = 0; i < N; i++)
+        delete [] B[i];
+
+for (int i = 0; i < M; i++)
+        delete [] C[i];
+
+
+system("pause");
+return 0;
+}
