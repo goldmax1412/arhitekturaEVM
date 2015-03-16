@@ -115,6 +115,61 @@ void umnch(int M,int N,int P)
 			delete [] A[i];
 }
 
+
+
+
+void step(int M)
+{
+    int **a = new int* [M]; // кол-во строк
+    for (int i = 0; i < M; i++)
+         a[i] = new int [M]; // кол-во столбцов
+	int **b = new int* [M]; // кол-во строк
+    for (int i = 0; i < M; i++)
+         b[i] = new int [M]; // кол-во столбцов
+	int **c = new int* [M]; // кол-во строк
+    for (int i = 0; i < M; i++)
+         c[i] = new int [M]; // кол-во столбцов
+	 int i,j,k,n,m,h,l,step,p=0,g;
+    cout<<"Vvesti stepen' v kotoruiu nado vozvesti matricu"<<endl;
+	cin>>step;
+	m=M;
+	cout<<"Zadaite matricu razmerom "<<m<<"x"<<m;
+	 for(i=0;i<m;i++)
+      { 
+	   cout<<endl;
+	   cout<<"Elementy "<<i+1<<" stroki matricy"<<endl;
+	   for(j=0;j<m;j++)
+	      {
+		   cin>>a[i][j];
+	       b[i][j]=a[i][j];
+	      };  
+	   };
+	cout<<endl<<"Iskoma9 matrica"<<endl;
+	for ( int i1=0;i1<step-1;i1++)
+	   {
+		for(i=0;i<m;i++) 
+	      {
+		   h=0;
+		   cout<<endl;
+		   for(j=0;j<m;j++)
+		       {
+			    for(l=0;l<m;l++)
+			         p=p+a[i][l]*b[l][h];
+                c[i][j]=p;
+			    p=0;h++;
+	           };
+	       };
+	    for(i=0;i<m;i++)
+	        for(j=0;j<m;j++)
+	             b[i][j]=c[i][j];
+	   };
+	for(i=0;i<m;i++) 
+	   {
+		cout<<endl;
+		for(j=0;j<m;j++)
+            cout<<c[i][j]<<"  ";
+	   };    	
+   }
 int main()
 {
 	
@@ -140,5 +195,10 @@ int main()
     cin >> P;
 	umnch(M,N,P);
 	cout<<endl;
+cout << "Vvedite rang matricy ";
+    cin >> M;
+	step(M);
+system("pause");
+	return 0;
 
 }
